@@ -21,4 +21,7 @@ public interface Authentication {
   void setupConnection(AbstractHttpClient client);
   void signRequest(HttpUriRequest request, String postContent);
 
+  String getUsername();
+  String getPassword();
+
 }

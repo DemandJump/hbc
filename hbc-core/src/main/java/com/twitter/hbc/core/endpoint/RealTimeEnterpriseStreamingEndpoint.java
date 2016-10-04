@@ -20,7 +20,7 @@ public class RealTimeEnterpriseStreamingEndpoint extends EnterpriseStreamingEndp
     super(account, product, label);
   }
 
-  public RealTimeEnterpriseStreamingEndpoint(String account, String product, String label, int clientId) {
-    super(account, product, label, clientId);
+  public RealTimeEnterpriseStreamingEndpoint(String account, String product, String label, int backfillMins) {
+    super(account, product, label, backfillMins);
   }
 }

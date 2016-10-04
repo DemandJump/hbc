@@ -81,19 +81,19 @@ public class EndpointTest {
 
   @Test
   public void testEnterpriseStreamingEndpoint() {
-    RealTimeEnterpriseStreamingEndpoint endpoint = new RealTimeEnterpriseStreamingEndpoint("account_name", "track", "stream_label");
-    String expected = "/accounts/account_name/publishers/twitter/streams/track/stream_label.json";
-    assertEquals(endpoint.getURI(), expected);
+    RealTimeEnterpriseStreamingEndpoint endpoint = new RealTimeEnterpriseStreamingEndpoint("account_name", "powertrack", "stream_label");
+    String expected = "/stream/powertrack/accounts/account_name/publishers/twitter/stream_label.json";
+    assertEquals(expected, endpoint.getURI());
   }
 
   @Test
   public void testEnterpriseStreamingEndpointProduct() {
     String account = "account_name";
     String label = "test_label";
-    String powerTrackProduct = "track";
-    String decaHoseProduct = "decahose";
-    String powerTrackURI = "/accounts/account_name/publishers/twitter/streams/track/test_label.json";
-    String decaHoseProductURI = "/accounts/account_name/publishers/twitter/streams/decahose/test_label.json";
+    String powerTrackProduct = "powertrack";
+    String decaHoseProduct = "sample10";
+    String powerTrackURI = "/stream/powertrack/accounts/account_name/publishers/twitter/test_label.json";
+    String decaHoseProductURI = "/stream/sample10/accounts/account_name/publishers/twitter/test_label.json";
 
     RealTimeEnterpriseStreamingEndpoint trackEndpoint = new RealTimeEnterpriseStreamingEndpoint(account, powerTrackProduct, label);
     RealTimeEnterpriseStreamingEndpoint decaHoseEndpoint = new RealTimeEnterpriseStreamingEndpoint(account, decaHoseProduct, label);
@@ -122,7 +122,7 @@ public class EndpointTest {
   @Test
   public void testBackfillParamOnEnterpriseStreamEndpoint() {
     RealTimeEnterpriseStreamingEndpoint endpoint = new RealTimeEnterpriseStreamingEndpoint("account_name", "stream_label", "track", 1);
-    assertTrue("Endpoint should contain clientId", endpoint.getURI().contains("client=1"));
+    assertTrue("Endpoint should contain backfill minutes", endpoint.getURI().contains("backfillMinutes=1"));
   }
 
   @Test

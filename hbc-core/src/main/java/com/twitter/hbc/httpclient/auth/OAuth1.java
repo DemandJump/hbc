@@ -132,6 +132,16 @@ public class OAuth1 implements Authentication {
 
   }
 
+  @Override
+  public String getUsername() {
+    return null;
+  }
+
+  @Override
+  public String getPassword() {
+    return null;
+  }
+
   private String quoted(String str) {
     return "\"" + str + "\"";
   }
