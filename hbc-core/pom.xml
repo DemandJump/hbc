@@ -74,7 +74,7 @@
                 <buildNumber>{{CIRCLE_BUILD_NUM}}</buildNumber>
                 <buildUrl>{{CIRCLE_BUILD_URL}}</buildUrl>
                 <vcsRevision>{{CIRCLE_SHA1}}</vcsRevision>
-                <buildName>core</buildName>
+                <buildName>hbc-core</buildName>
               </buildInfo>
               <publisher>
                 <contextUrl>{{ARTIFACTORY_URL}}</contextUrl>
