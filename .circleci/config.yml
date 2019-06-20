@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: maven:3.5.0-jdk-8
+    steps:
+      - checkout
+      - restore_cache:
+          key: hbc-core-{{ checksum "hbc-core/pom.xml" }}-{{ checksum "settings.xml" }}
+      - run: cd hbc-core && mvn -s settings.xml clean compile test
+      - deploy:
+          name: Publish to artifactory
+          command: cd hbc-core && mvn -s ../settings.xml deploy
+      - save_cache:
+          key: hbc-core-{{ checksum "hbc-core/pom.xml" }}-{{ checksum "settings.xml" }}
+          paths:
+            - "~/.m2"
