@@ -1,3 +1,6 @@
+== 2.2.1
+* update to use Gnip's 2.0 APIs
+
 == 2.2.0
 * Add support for Gnip's PowerTrack streaming APIs.
 * Twitter4j - Fix user/message extraction for sitestreams (https://github.com/twitter/hbc/pull/118)
