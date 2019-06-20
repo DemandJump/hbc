@@ -7,7 +7,7 @@ jobs:
       - checkout
       - restore_cache:
           key: hbc-core-{{ checksum "hbc-core/pom.xml" }}-{{ checksum "settings.xml" }}
-      - run: cd hbc-core && mvn -s settings.xml clean compile test
+      - run: cd hbc-core && mvn -s ../settings.xml clean compile test
       - deploy:
           name: Publish to artifactory
           command: cd hbc-core && mvn -s ../settings.xml deploy
