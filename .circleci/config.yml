@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: hbc-core-{{ checksum "hbc-core/pom.xml" }}-{{ checksum "settings.xml" }}
-      - run: cd hbc-core && mvn -s ../settings.xml clean compile test
+          key: hbc-{{ checksum "pom.xml" }}-{{ checksum "hbc-core/pom.xml" }}-{{ checksum "settings.xml" }}
+      - run: mvn -s settings.xml clean compile test
       - deploy:
           name: Publish to artifactory
-          command: cd hbc-core && mvn -s ../settings.xml deploy
+          command: mvn -s settings.xml deploy
       - save_cache:
-          key: hbc-core-{{ checksum "hbc-core/pom.xml" }}-{{ checksum "settings.xml" }}
+          key: hbc-{{ checksum "pom.xml" }}-{{ checksum "hbc-core/pom.xml" }}-{{ checksum "settings.xml" }}
           paths:
             - "~/.m2"
